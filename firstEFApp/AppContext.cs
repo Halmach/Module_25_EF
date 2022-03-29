@@ -18,6 +18,9 @@ namespace firstEFApp
         // Объекты таблицы Companies
         public DbSet<Company> Companies { get; set; }
 
+        // Объекты таблицы Topics
+        public DbSet<Topic> Topics { get; set; }
+
 
         public AppContext()
         {

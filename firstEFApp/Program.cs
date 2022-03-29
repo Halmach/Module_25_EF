@@ -10,7 +10,7 @@ namespace firstEFApp
             using (var db = new AppContext())
             {
 
-                // один ко многим
+                // многие ко многим
 
                 var company1 = new Company { Name = "SF" };
                 var company2 = new Company { Name = "VK" };
@@ -22,6 +22,11 @@ namespace firstEFApp
 
 
 
+                var topic1 = new Topic { Name = "Topic1" };
+                var topic2 = new Topic { Name = "Topic2" };
+
+                db.Topics.AddRange(topic1, topic2);
+
 
                 var user1 = new User { Id = "1", Name = "Artur", Role = "Admin" };
                 var user2 = new User { Id = "2", Name = "Bob", Role = "Admin" };
@@ -32,7 +37,12 @@ namespace firstEFApp
                 company2.Users.Add(user2);
                 user3.CompanyId = company3.Id;
 
+
                 db.Users.AddRange(user1, user2, user3);
+
+                user1.Topics.Add(topic1);
+                user2.Topics.Add(topic2);
+                user3.Topics.Add(topic2);    
                 
                 db.SaveChanges();
 
@@ -50,6 +60,8 @@ namespace firstEFApp
                 db.UserCredentials.AddRange(user1Creds, user2Creds, user3Creds);
 
                 db.SaveChanges();
+
+
 
 
                 

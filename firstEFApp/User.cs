@@ -21,5 +21,8 @@ namespace firstEFApp
 
         // Навигационное свойство
         public Company Company { get; set; }
+
+        // Навигационное свойство
+        public List<Topic> Topics { get; set; } = new List<Topic>();
     }
 }
