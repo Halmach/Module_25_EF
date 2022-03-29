@@ -16,10 +16,10 @@ namespace firstEFApp
 
         // Навигационное свойство
         public UserCredential UserCredential { get; set; }
-        //// Внешний ключ
-        //public int CompanyId { get; set; }
+        // Внешний ключ
+        public int CompanyId { get; set; }
 
-        //// Навигационное свойство
-        //public Company Company { get; set; }
+        // Навигационное свойство
+        public Company Company { get; set; }
     }
 }

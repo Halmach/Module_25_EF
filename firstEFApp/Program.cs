@@ -10,34 +10,49 @@ namespace firstEFApp
             using (var db = new AppContext())
             {
 
-                // отношение один к одному
+                // один ко многим
+
+                var company1 = new Company { Name = "SF" };
+                var company2 = new Company { Name = "VK" };
+
+                var company3 = new Company { Name = "FB" };
+                
+                db.Companies.AddRange(company1, company2, company3);
+                db.SaveChanges();
+
+
+
 
                 var user1 = new User { Id = "1", Name = "Artur", Role = "Admin" };
                 var user2 = new User { Id = "2", Name = "Bob", Role = "Admin" };
                 var user3 = new User { Id = "3", Name = "Clack", Role = "User" };
-                var user4 = new User { Id = "4", Name = "Dan", Role = "User" };
+               // var user4 = new User { Id = "4", Name = "Dan", Role = "User" };
 
-                db.Users.AddRange(user1, user2, user3, user4);
+                user1.Company = company1;
+                company2.Users.Add(user2);
+                user3.CompanyId = company3.Id;
+
+                db.Users.AddRange(user1, user2, user3);
                 
                 db.SaveChanges();
 
                 var user1Creds = new UserCredential { Login = "ArthurL", Password = "qwerty123" };
                 var user2Creds = new UserCredential { Login = "Bobj", Password = "asdfgh585" };
                 var user3Creds = new UserCredential { Login = "ClarkK", Password = "111zlt777" };
-                var user4Creds = new UserCredential { Login = "DanE", Password = "zxc333vbn" };
+              //  var user4Creds = new UserCredential { Login = "DanE", Password = "zxc333vbn" };
 
                 // Связать объекты сущноностей User и UserCredential 
                 user1Creds.User = user1;
                 user2Creds.UserId = user2.Id;
                 user3.UserCredential = user3Creds;
-                user4.UserCredential = user4Creds;
+               // user4.UserCredential = user4Creds;
 
-                db.UserCredentials.AddRange(user1Creds, user2Creds, user3Creds, user4Creds);
+                db.UserCredentials.AddRange(user1Creds, user2Creds, user3Creds);
 
                 db.SaveChanges();
 
 
-                // один ко многим
+                
 
 
 
