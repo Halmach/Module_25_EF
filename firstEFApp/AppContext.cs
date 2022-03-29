@@ -12,8 +12,12 @@ namespace firstEFApp
         // Объекты таблицы Users
         public DbSet<User> Users { get; set; }
 
+        // Объекты таблицы UserCredentials
+        public DbSet<UserCredential> UserCredentials { get; set; }
+
         public AppContext()
         {
+            Database.EnsureDeleted();   // удаление старых таблиц для создания новых связей
             Database.EnsureCreated();
         }
 
