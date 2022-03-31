@@ -13,7 +13,7 @@ namespace firstEFApp
         public string Password { get; set; }
 
         // Внешний ключ
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         
         // Навигационное свойство
         public User User { get; set; }

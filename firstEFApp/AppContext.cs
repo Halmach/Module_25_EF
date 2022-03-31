@@ -24,8 +24,8 @@ namespace firstEFApp
 
         public AppContext()
         {
-            Database.EnsureDeleted();   // удаление старых таблиц для создания новых связей
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();   // удаление старых таблиц для создания новых связей
+            //Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
